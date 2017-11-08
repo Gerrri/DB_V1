@@ -5,17 +5,109 @@
  */
 package db_v1;
 
+import java.io.*;
+import java.util.*;
+
 /**
  *
  * @author Dustin
  */
 public class DB_V1 {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+
+    public static void main(String[] args) throws IOException {
+    	ArrayList<String> einlesen=new ArrayList<String>();
+        ArrayList<Artikel> art_list = new ArrayList<Artikel>();
+        ArrayList<Index> ind_list = new ArrayList<Index>();
+    	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    	String temp_str;
+    	Artikel temp_art;
+    	Index temp_ind;
+    	
+    	FileReader fr1 = new FileReader("Artikel.dat");
+        BufferedReader br1 = new BufferedReader(fr1);
+        
+        temp_str = br1.readLine();
+        while (temp_str != null) {
+        	einlesen.add(temp_str);
+        	temp_str = br1.readLine();
+        }
+        
+        fr1.close();
+        
+        for(int i = 0; i < einlesen.size();i++) {
+        	temp_art = new Artikel(einlesen.get(i));
+        	if(temp_art.getCnt()==1) {
+        	art_list.add(temp_art);
+        	temp_ind = new Index(temp_art);
+        	ind_list.add(temp_ind);
+        	}
+        	
+        }
+    	
+    	
+    	int choice;
+    	System.out.println("Für die erfassung neuer Nutzerdaten geben Sie bitte '1'ein.");
+    	System.out.println("Für den sequenziellen Zugriff geben Sie bitte '2' ein.");
+    	System.out.println("Was auch immert");
+    	System.out.println("Zum beenden des Programms und abspeichern der INDEX-Liste bitte '4' eingeben.");
+    	choice=Integer.parseInt(in.readLine());
+    	do{
+    	  switch (choice){
+    	    case 1: System.out.println("Erfassen neuer Nutzerdaten");
+    	        	break;
+    	    
+    	    case 2:  
+    	        break;
+    	    
+    	    case 3:
+    	        break;
+    	    
+    	    case 4:
+    	        break;
+    	    
+    	    case 5:
+    	        break;
+
+    	  } 
+
+    	  
+    	}while(choice !=4);
+        
+        
+        
+    
+    
     }
+    
+   /* static void einlesen(ArrayList<String> einlesen, ArrayList<Artikel> art_list, ArrayList<Index> ind_list) throws IOException {
+    	String name;
+    	String temp_str;
+    	Artikel temp_art;
+    	Index temp_ind;
+    	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+    	
+    	System.out.println("Bitte geben Sie den Dateinamen ein.");
+    	name = in.readLine();
+    	FileReader fr1 = new FileReader(name);
+        BufferedReader br1 = new BufferedReader(fr1);
+        
+        temp_str = br1.readLine();
+        while (temp_str != null) {
+        	einlesen.add(temp_str);
+        	temp_str = br1.readLine();
+        }
+        
+        fr1.close();
+        
+        for(int i = 0; i < einlesen.size();i++) {
+        	temp_art = new Artikel(einlesen.get(i));
+        	art_list.add(temp_art);
+        	temp_ind = new Index(temp_art);
+        	ind_list.add(temp_ind);
+        	
+        }
+    }*/
+    
     
 }
