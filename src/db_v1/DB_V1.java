@@ -15,6 +15,10 @@ import java.util.*;
 public class DB_V1 {
 
     public static void main(String[] args) throws IOException {
+    	FileReader fr1 = new FileReader("Artikel.dat");
+        BufferedReader br1 = new BufferedReader(fr1);
+    	FileWriter fw1 = new FileWriter ("Artikel.dat");
+    	PrintWriter pw1 = new PrintWriter (fw1);
         ArrayList<Artikel> art_list = new ArrayList<Artikel>();
         ArrayList<Index> ind_list = new ArrayList<Index>();
         RandomAccessFile raf = new RandomAccessFile("/user/Speedster/Artikel.dat","rw");
@@ -25,8 +29,7 @@ public class DB_V1 {
         int h_1;
         int h_2;
 
-        FileReader fr1 = new FileReader("Artikel.txt");
-        BufferedReader br1 = new BufferedReader(fr1);
+        
 
         temp_str = br1.readLine();
         raf.seek(0);
@@ -60,10 +63,13 @@ public class DB_V1 {
                     System.out.println("Erfassen neuer Nutzerdaten");
                     System.out.println("Bitte geben Sie die neuen Nuterdaten im Format : 'artnr;artbez;mge;preis;steu' ein.");
                     temp_str = in.readLine();
+                    pw1.println(temp_str);
+                    h_1 = temp_str.length();
                     temp_art = new Artikel(temp_str);
                     art_list.add(temp_art);
                     temp_ind = new Index(temp_art.getArtnr(),raf.getFilePointer());
                     ind_list.add(temp_ind);
+                    h_2 += h_1;
                     break;
 
                 case 2:
