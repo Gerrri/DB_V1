@@ -51,6 +51,15 @@ public class Artikel {
 	public int getCnt() {
 		return cnt;
 	}
+        
+        public void ausgeben(){
+            System.out.println("Artikelbezeichnung: "+artbez);
+            System.out.println("Artikelnummer: "+artnr);
+            System.out.println("Mengeneinheit: "+mge);
+            System.out.println("Preis: "+preis);
+            System.out.println("Steuersatz: "+steu);
+            System.out.println();
+        }
 	
 	
 }
