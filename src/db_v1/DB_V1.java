@@ -15,34 +15,37 @@ import java.util.*;
 public class DB_V1 {
 
     public static void main(String[] args) throws IOException {
-        ArrayList<String> einlesen = new ArrayList<String>();
         ArrayList<Artikel> art_list = new ArrayList<Artikel>();
         ArrayList<Index> ind_list = new ArrayList<Index>();
+        RandomAccessFile raf = new RandomAccessFile("/user/Speedster/Artikel.dat","rw");
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String temp_str;
         Artikel temp_art;
         Index temp_ind;
+        int h_1;
+        int h_2;
 
         FileReader fr1 = new FileReader("Artikel.txt");
         BufferedReader br1 = new BufferedReader(fr1);
 
         temp_str = br1.readLine();
+        raf.seek(0);
         while (temp_str != null) {
-            einlesen.add(temp_str);
-            temp_str = br1.readLine();
+        	h_1 = temp_str.length();
+        	temp_art = new Artikel(temp_str);
+            art_list.add(temp_art);
+            
+            temp_ind = new Index(temp_art.getArtnr(),raf.getFilePointer());
+            ind_list.add(temp_ind);
+
+        	temp_str = br1.readLine();
+        	
+        	h_2 += h_1;
+            
         }
 
         fr1.close();
 
-        for (int i = 0; i < einlesen.size(); i++) {
-            temp_art = new Artikel(einlesen.get(i));
-            if (temp_art.getCnt() == 1) {
-                art_list.add(temp_art);
-                temp_ind = new Index(temp_art);
-                ind_list.add(temp_ind);
-            }
-
-        }
 
         int choice;
         do {
@@ -59,7 +62,7 @@ public class DB_V1 {
                     temp_str = in.readLine();
                     temp_art = new Artikel(temp_str);
                     art_list.add(temp_art);
-                    temp_ind = new Index(temp_art);
+                    temp_ind = new Index(temp_art.getArtnr(),raf.getFilePointer());
                     ind_list.add(temp_ind);
                     break;
 
