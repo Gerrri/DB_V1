@@ -27,7 +27,7 @@ public class DB_V1 {
         Artikel temp_art;
         Index temp_ind;
         int h_1;
-        int h_2;
+        int h_2 = 0;
 
         
 
