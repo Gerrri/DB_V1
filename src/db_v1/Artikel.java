@@ -54,7 +54,7 @@ public class Artikel {
 		return cnt;
 	}
 
-	public void ausgeben() {
+	public void ausgabe() {
 		System.out.println("Artikelbezeichnung: " + artbez);
 		System.out.println("Artikelnummer: " + artnr);
 		System.out.println("Mengeneinheit: " + mge);
