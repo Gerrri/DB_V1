@@ -40,7 +40,7 @@ public class DB_V1 {
 
 			temp_str = br1.readLine();
 
-			h_2 += h_1;
+			h_2 += h_1+1;
 
 			raf.seek(h_2);
 		}
@@ -71,7 +71,7 @@ public class DB_V1 {
 				art_list.add(temp_art);
 				temp_ind = new Index(temp_art.getArtnr(), raf.getFilePointer());
 				ind_list.add(temp_ind);
-				h_2 += h_1;
+				h_2 += h_1+1;
 				pw1.close();
 				break;
 
