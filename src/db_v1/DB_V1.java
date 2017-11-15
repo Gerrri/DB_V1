@@ -60,7 +60,7 @@ public class DB_V1 {
 			switch (choice) {
 
 			case 1:
-				FileWriter fw1 = new FileWriter("Artikel.dat");
+				FileWriter fw1 = new FileWriter("Artikel.dat"N,true);
 				PrintWriter pw1 = new PrintWriter(fw1);
 				System.out.println("Erfassen neuer Nutzerdaten");
 				System.out.println("Bitte geben Sie die neuen Nuterdaten im Format : 'artnr;artbez;mge;preis;steu' ein.");
