@@ -20,7 +20,6 @@ public class DB_V1 {
 		BufferedReader br1 = new BufferedReader(fr1);
 		ArrayList<Artikel> art_list = new ArrayList<Artikel>();
 		ArrayList<Index> ind_list = new ArrayList<Index>();
-		ArrayList<Index> ind_list_h = new ArrayList<Index>();
 		RandomAccessFile raf = new RandomAccessFile("Artikel.dat", "rw");
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		String temp_str;
@@ -54,13 +53,13 @@ public class DB_V1 {
 		do {
 			System.out.println("Fuer die erfassung neuer Nutzerdaten geben Sie bitte '1'ein.");
 			System.out.println("Fuer den sequenziellen Zugriff geben Sie bitte '2' ein.");
-			System.out.println("Was auch immert");
+			System.out.println("Fuer die Suche nach einem Artikel bitte '3' eingeben.");
 			System.out.println("Zum beenden des Programms und abspeichern der INDEX-Liste bitte '4' eingeben.");
 			choice = Integer.parseInt(in.readLine());
 			switch (choice) {
 
 			case 1:
-				FileWriter fw1 = new FileWriter("Artikel.dat"N,true);
+				FileWriter fw1 = new FileWriter("Artikel.dat",true);
 				PrintWriter pw1 = new PrintWriter(fw1);
 				System.out.println("Erfassen neuer Nutzerdaten");
 				System.out.println("Bitte geben Sie die neuen Nuterdaten im Format : 'artnr;artbez;mge;preis;steu' ein.");
@@ -99,12 +98,13 @@ public class DB_V1 {
 				}
 				if (kontrolle != -1) {
 					raf.seek(ind_list.get(kontrolle).getoffset());
-					for (int k=0;k<art_list.size();k++) {
+					System.out.println(raf.readLine());
+					/*for (int k=0;k<art_list.size();k++) {
 						if(suche==art_list.get(k).getArtnr()) {
 							art_list.get(k).ausgabe();
 							break;
 						}
-					}
+					}*/
 				}else {
 					System.out.println("Es wurde kein Artikel mit dieser Artikelnummer gefunden.");
 				}
